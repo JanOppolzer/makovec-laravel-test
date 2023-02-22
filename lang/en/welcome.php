@@ -1,0 +1,13 @@
+<?php
+
+return [
+    'cn' => 'common name',
+    'contact' => 'In case of any issues or questions, do not hesitate to contact us at',
+    'introduction' => 'Welcome to <em>Makovec</em> application, a simple web application to manage devices and their <abbr title="Media Access Control">MAC</abbr> addresses connected to CESNET\'s LAN network.',
+    'mail' => 'email address',
+    'pii-link' => 'https://www.cesnet.cz/personal-data-processing/?lang=en',
+    'pii-text' => 'Personal data processing',
+    'requested_attributes' => 'In order to log in, the application requires your Identity Provider to release the following attributes:',
+    'switch_language' => 'Přepnout do češtiny',
+    'uniqueid' => 'eduPersonUniqueId',
+];
