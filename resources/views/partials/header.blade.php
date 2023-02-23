@@ -35,7 +35,7 @@
                         @endcan
                         <li>
                             <x-button-header href="{{ route('users.show', auth()->user()->id) }}"
-                                active="{{ Route::currentRouteName() === 'users.show' }}">
+                                active="{{ Route::currentRouteName() === 'users.show' && request()->segment(2) === (string) auth()->user()->id }}">
                                 {{ __('common.my_profile') }}</x-button-header>
                         </li>
                         @can('do-everything')
@@ -49,7 +49,8 @@
                         @can('viewAny', App\Models\User::class)
                             <li>
                                 <x-button-header href="{{ route('users.index') }}"
-                                    active="{{ Route::currentRouteName() === 'users.index' }}">{{ __('common.users') }}
+                                    active="{{ Route::currentRouteName() === 'users.index' || (Route::currentRouteName() === 'users.show' && request()->segment(2) !== (string) auth()->user()->id) }}">
+                                    {{ __('common.users') }}
                                 </x-button-header>
                             </li>
                         @endcan

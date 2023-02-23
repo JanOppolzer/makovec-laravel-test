@@ -6,6 +6,7 @@ return [
     'add' => 'Add',
     'admin_grant' => 'Grant admin',
     'admin_revoke' => 'Revoke admin',
+    'administrator' => 'Administrator',
     'all' => 'All',
     'back' => 'Back',
     'categories' => 'Categories',
