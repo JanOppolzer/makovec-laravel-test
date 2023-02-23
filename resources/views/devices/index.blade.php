@@ -3,7 +3,7 @@
 
 @section('links')
 
-    @if (count($types) > 1)
+    @if (count($types) > 0)
         <x-button-subheader href="?type=" :active="is_null(request('type'))">{{ __('common.all') }}</x-button-subheader>
 
         @foreach ($types as $type)
