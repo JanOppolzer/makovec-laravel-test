@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
 use App\Mail\UserAccountCreated;
 use App\Mail\UserRoleChanged;
 use App\Mail\UserStatusChanged;
@@ -78,7 +77,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $user): RedirectResponse
+    public function update(Request $request, User $user): RedirectResponse
     {
         $this->authorize('update', $user);
 
