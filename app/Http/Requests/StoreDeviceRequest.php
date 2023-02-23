@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\KnownDeviceType;
+use App\Rules\UniqueMacStore;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreDeviceRequest extends FormRequest
@@ -23,7 +24,7 @@ class StoreDeviceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mac' => ['required', 'mac_address'], // UniqueMacAddressStore
+            'mac' => ['required', 'mac_address', new UniqueMacStore],
             'category_id' => ['required', new KnownDeviceType],
             'name' => 'string|min:3|max:64|nullable|unique:devices',
             'description' => 'string|max:255|nullable',

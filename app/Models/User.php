@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -40,4 +41,24 @@ class User extends Authenticatable
         'admin' => 'boolean',
         'active' => 'boolean',
     ];
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class)->withTimestamps();
+    }
+
+    public function scopeActiveAdmins(Builder $query): void
+    {
+        $query
+            ->where('admin', true)
+            ->where('active', true);
+    }
+
+    public function scopeSearch(Builder $query, ?string $search = null): void
+    {
+        $query
+            ->where('name', 'like', "%$search%")
+            ->orWhere('uniqueid', 'like', "%$search%")
+            ->orWhere('email', 'like', "%$search%");
+    }
 }

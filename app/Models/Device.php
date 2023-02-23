@@ -55,7 +55,7 @@ class Device extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeSearch(Builder $query, ?string $search = null)
+    public function scopeSearch(Builder $query, ?string $search = null): void
     {
         $query
             ->where('mac', 'like', "%$search%")

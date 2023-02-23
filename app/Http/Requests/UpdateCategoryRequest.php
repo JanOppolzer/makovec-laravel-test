@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueVlanUpdate;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,9 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'type' => ['required', 'alpha:ascii', 'min:2', 'max:32', Rule::unique('categories')->ignore($this->route('category'))],
+            'description' => ['required', 'string', 'max:255', Rule::unique('categories')->ignore($this->route('category'))],
+            'vlan' => ['required', 'regex:/^[a-zA-Z_\ ]+$/i', 'max:64', new UniqueVlanUpdate],
         ];
     }
 }

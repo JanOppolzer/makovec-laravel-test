@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -15,9 +16,8 @@ class UserRoleChanged extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public User $user)
     {
-        //
     }
 
     /**
@@ -26,7 +26,8 @@ class UserRoleChanged extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'User Role Changed',
+            to: User::activeAdmins()->pluck('email'),
+            subject: __('emails.user_role_changed_subject', ['name' => $this->user->name]),
         );
     }
 
@@ -36,7 +37,7 @@ class UserRoleChanged extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            markdown: 'emails.user_role_changed',
         );
     }
 

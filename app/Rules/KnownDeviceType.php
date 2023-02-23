@@ -25,7 +25,7 @@ class KnownDeviceType implements ValidationRule
             $fail(__('devices.no_permissions_for_this_category'));
         }
 
-        $count = Category::findOrFail(request('category_id'));
+        $count = Category::find(request('category_id'));
 
         if (! $count) {
             $fail(__('devices.unknown_category'));
