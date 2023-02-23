@@ -73,7 +73,7 @@
 
                 <p class="sm:pt-10 pt-6 text-center">
                     <a class="md:inline-block hover:bg-blue-600 text-blue-50 hover:shadow-lg block px-6 py-3 font-bold bg-blue-500 rounded shadow"
-                        href="#login">{{ __('common.login') }}</a>
+                        href="{{ route('login') }}">{{ __('common.login') }}</a>
                 </p>
             </main>
 
