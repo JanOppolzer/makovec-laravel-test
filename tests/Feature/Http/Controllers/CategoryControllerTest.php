@@ -256,4 +256,30 @@ class CategoryControllerTest extends TestCase
             ->assertSeeText(__('categories.deleted', ['type' => $category->type]));
         $this->assertCount(0, Category::all());
     }
+
+    /** @test */
+    public function a_form_to_add_a_category_shows_all_texts(): void
+    {
+        $admin = User::factory()->create(['active' => true, 'admin' => true]);
+
+        $this->assertCount(1, User::all());
+        $this
+            ->actingAs($admin)
+            ->followingRedirects()
+            ->get(route('categories.create'))
+            ->assertOk()
+            ->assertSeeInOrder([
+                __('categories.add'),
+                __('categories.profile'),
+                __('common.type'),
+                __('inputs.placeholder_type'),
+                __('common.description'),
+                __('inputs.placeholder_description'),
+                __('common.vlan'),
+                __('inputs.placeholder_vlan'),
+                __('categories.vlan_regexp'),
+                __('common.back'),
+                __('common.add'),
+            ]);
+    }
 }

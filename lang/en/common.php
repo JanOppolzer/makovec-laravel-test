@@ -22,6 +22,7 @@ return [
     'delete' => 'Delete',
     'description' => 'Description',
     'devices' => 'Devices',
+    'disabled' => 'Disabled',
     'edit' => 'Edit',
     'email_address' => 'Email address',
     'email' => 'Email address',

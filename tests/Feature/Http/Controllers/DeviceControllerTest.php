@@ -419,4 +419,36 @@ class DeviceControllerTest extends TestCase
             ->assertOk()
             ->assertSeeText(__('devices.deleted', ['name' => $device->mac, 'model' => $device->type]));
     }
+
+    /** @test */
+    public function a_form_to_add_a_device_shows_all_texts(): void
+    {
+        $admin = User::factory()->create(['active' => true, 'admin' => true]);
+
+        $this->assertCount(1, User::all());
+        $this
+            ->actingAs($admin)
+            ->followingRedirects()
+            ->get(route('devices.create'))
+            ->assertOk()
+            ->assertSeeInOrder([
+                __('devices.add'),
+                __('devices.device_profile'),
+                __('common.category'),
+                __('devices.choose_category'),
+                __('common.mac'),
+                __('inputs.placeholder_mac'),
+                __('common.name'),
+                __('inputs.placeholder_name'),
+                __('common.description'),
+                __('inputs.placeholder_description'),
+                __('common.enabled'),
+                __('common.enabled'),
+                __('common.disabled'),
+                __('common.valid_from'),
+                __('common.valid_to'),
+                __('common.back'),
+                __('common.add'),
+            ]);
+    }
 }
