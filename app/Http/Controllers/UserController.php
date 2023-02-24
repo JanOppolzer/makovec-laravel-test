@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
@@ -56,6 +57,8 @@ class UserController extends Controller
 
         Mail::send(new UserAccountCreated($user));
         Mail::send(new YourAccountCreated($user));
+
+        Log::channel('slack')->info('A new account has been just created! Check it here: '.route('users.show', $user));
 
         return to_route('users.show', $user)
             ->with('status', __('users.added', ['name' => $user->name]));
