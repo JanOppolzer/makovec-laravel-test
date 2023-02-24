@@ -38,11 +38,11 @@ class ShibbolethController extends Controller
             ]
         );
 
+        $user->refresh();
+
         if ($user->login_at === $user->created_at) {
             Log::channel('slack')->info($user->name.' has just created an account, activate it here: '.route('users.show', $user));
         }
-
-        $user->refresh();
 
         if (! $user->active) {
             return redirect('blocked');
