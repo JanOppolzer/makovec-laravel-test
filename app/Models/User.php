@@ -41,7 +41,7 @@ class User extends Authenticatable
     protected $casts = [
         'admin' => 'boolean',
         'active' => 'boolean',
-        'login_at' => 'timestamp',
+        'login_at' => 'datetime',
     ];
 
     public function categories(): BelongsToMany
