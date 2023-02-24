@@ -55,7 +55,7 @@
 
         <x-dl-div>
             <x-slot:dt>
-                <x-label for="enabled">{{ __('common.enabled') }}</x-label>
+                <x-label for="enabled">{{ __('common.status') }}</x-label>
             </x-slot:dt>
 
             <x-select name="enabled">
