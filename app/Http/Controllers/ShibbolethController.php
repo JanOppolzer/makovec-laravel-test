@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class ShibbolethController extends Controller
@@ -36,6 +37,10 @@ class ShibbolethController extends Controller
                 'last_login' => now(),
             ]
         );
+
+        if ($user->wasRecentlyCreated()) {
+            Log::channel('slack')->info($user->name.' has just created an account, activate it here: '.route('users.show', $user));
+        }
 
         $user->refresh();
 

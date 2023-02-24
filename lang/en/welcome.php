@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'blocked_account' => 'Your account has been blocked.',
+    'blocked_account' => 'Your account is either inactive or blocked.',
     'blocked_info' => 'For more information and possible unblocking your account, contact us at',
     'cn' => 'common name',
     'contact' => 'In case of any issues or questions, do not hesitate to contact us at',
