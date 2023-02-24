@@ -34,11 +34,11 @@ class ShibbolethController extends Controller
                 'name' => request()->server('cn'),
                 'email' => $mail[0],
                 'emails' => count($mail) > 1 ? request()->server('mail') : null,
-                'last_login' => now(),
+                'login_at' => now(),
             ]
         );
 
-        if ($user->wasRecentlyCreated()) {
+        if ($user->login_at === $user->created_at) {
             Log::channel('slack')->info($user->name.' has just created an account, activate it here: '.route('users.show', $user));
         }
 

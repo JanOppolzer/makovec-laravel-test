@@ -16,6 +16,7 @@ class FakeController extends Controller
         }
 
         $user = User::findOrFail($id ?? request('id'));
+        $user->update(['login_at' => now()]);
 
         if (! $user->active) {
             return redirect('blocked');

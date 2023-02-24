@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('emails')->nullable();
             $table->boolean('active')->default(false);
             $table->boolean('admin')->default(false);
+            $table->timestamp('login_at')->nullable();
             $table->timestamps();
         });
     }
