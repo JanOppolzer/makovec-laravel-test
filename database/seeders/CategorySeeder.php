@@ -12,7 +12,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory()->createMany([
+        $categories = [
             [
                 'type' => $type = 'phone',
                 'description' => 'IP Phones',
@@ -38,6 +38,10 @@ class CategorySeeder extends Seeder
                 'description' => 'Blind Devices',
                 'vlan' => $type,
             ],
-        ]);
+        ];
+
+        foreach ($categories as $category) {
+            Category::create($category);
+        }
     }
 }
