@@ -27,7 +27,11 @@ class CreateOrReplaceEnabledDevicesViewCommand extends Command
     public function handle(): void
     {
         DB::statement('
-            CREATE OR REPLACE VIEW
+            DROP VIEW IF EXISTS enabled_devices;
+        ');
+
+        DB::statement('
+            CREATE VIEW IF NOT EXISTS
                     enabled_devices
                 AS
                 SELECT
