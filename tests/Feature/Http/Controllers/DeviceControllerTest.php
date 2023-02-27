@@ -442,7 +442,7 @@ class DeviceControllerTest extends TestCase
                 __('inputs.placeholder_name'),
                 __('common.description'),
                 __('inputs.placeholder_description'),
-                __('common.enabled'),
+                __('common.status'),
                 __('common.enabled'),
                 __('common.disabled'),
                 __('common.valid_from'),
