@@ -2,6 +2,8 @@
 
 Makovec is a simple [Laravel](https://www.laravel.com)-based web application to manage devices not using 802.1X to connect to network in Telehouse.
 
+[![Actions Status](https://github.com/JanOppolzer/makovec-laravel-test/workflows/Laravel/badge.svg)](https://github.com/JanOppolzer/makovec-laravel-test/actions)
+
 ## Requirements
 
 This application is written in Laravel 10 and uses PHP version at least 8.1.
