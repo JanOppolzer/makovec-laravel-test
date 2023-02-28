@@ -19,7 +19,7 @@ class CreateEnabledDevicesViewCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create or replace SQL view with devices enabled on the network.';
+    protected $description = 'Create SQL view with devices enabled on the network.';
 
     /**
      * Execute the console command.
