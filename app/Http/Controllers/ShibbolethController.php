@@ -7,10 +7,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class ShibbolethController extends Controller
 {
-    public function create(): RedirectResponse|string
+    public function create(): RedirectResponse|View|string
     {
         if (is_null(request()->server('Shib-Handler'))) {
             return 'login';
@@ -45,7 +46,7 @@ class ShibbolethController extends Controller
         }
 
         if (! $user->active) {
-            return redirect('blocked');
+            return view('blocked');
         }
 
         Auth::login($user);

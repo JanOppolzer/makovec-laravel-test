@@ -27,10 +27,6 @@ Route::get('/', function () {
     return auth()->user() ? view('dashboard') : view('welcome');
 })->name('home');
 
-Route::get('blocked', function () {
-    return auth()->user() ? redirect('/') : view('blocked');
-});
-
 Route::resource('devices', DeviceController::class);
 Route::resource('categories', CategoryController::class);
 

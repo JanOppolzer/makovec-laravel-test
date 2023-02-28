@@ -6,10 +6,11 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class FakeController extends Controller
 {
-    public function login(int $id = null): RedirectResponse
+    public function login(int $id = null): RedirectResponse|View
     {
         if (! app()->environment(['local', 'testing'])) {
             dd('Only for `local` and `testing` environments!');
@@ -19,7 +20,7 @@ class FakeController extends Controller
         $user->update(['login_at' => now()]);
 
         if (! $user->active) {
-            return redirect('blocked');
+            return view('blocked');
         }
 
         Auth::login($user);
