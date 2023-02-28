@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Artisan::call('sqlview:CreateOrReplaceEnabledDevicesView');
+        Artisan::call('sqlview:CreateEnabledDevicesView');
     }
 
     /**
@@ -19,6 +19,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP VIEW enabled_devices;');
+        DB::statement('DROP VIEW IF EXISTS enabled_devices;');
     }
 };

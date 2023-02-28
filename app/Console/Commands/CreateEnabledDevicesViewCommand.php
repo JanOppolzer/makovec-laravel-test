@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
-class CreateOrReplaceEnabledDevicesViewCommand extends Command
+class CreateEnabledDevicesViewCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'sqlview:CreateOrReplaceEnabledDevicesView';
+    protected $signature = 'sqlview:CreateEnabledDevicesView';
 
     /**
      * The console command description.
@@ -26,10 +26,6 @@ class CreateOrReplaceEnabledDevicesViewCommand extends Command
      */
     public function handle(): void
     {
-        DB::statement('
-            DROP VIEW IF EXISTS enabled_devices;
-        ');
-
         DB::statement('
             CREATE VIEW IF NOT EXISTS
                     enabled_devices
